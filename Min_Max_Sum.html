@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+var integer_1 = window.prompt("Vendosni nje numer pozitiv");
+var int_1 = parseInt( integer_1 );
+var integer_2 = window.prompt("Vendosni nje numer pozitiv");
+var int_2 = parseInt( integer_2 );
+var integer_3 = window.prompt("Vendosni nje numer pozitiv");
+var int_3 = parseInt( integer_3 );
+var integer_4 = window.prompt("Vendosni nje numer pozitiv");
+var int_4 = parseInt( integer_4 );
+var integer_5 = window.prompt("Vendosni nje numer pozitiv");
+var int_5 = parseInt( integer_5 );
+
+
+function Sum(){
+
+	if(!isFinite(int_1) || !isFinite(int_2) || !isFinite(int_3) || !isFinite(int_4) || !isFinite(int_5)){
+		document.writeln("Vendosni numra te sakte pozitive");
+	}
+	
+	else{
+	
+		var sum_v = [ , , , , ];
+		sum_v[0] = int_1 + int_2 + int_3 + int_4;
+		sum_v[1] = int_1 + int_2 + int_3 + int_5;
+		sum_v[2] = int_1 + int_2 + int_4 + int_5;
+		sum_v[3] = int_1 + int_3 + int_4 + int_5;
+		sum_v[4] = int_5 + int_2 + int_3 + int_4;
+		
+		var min=sum_v[0];
+		var max=sum_v[0];
+		
+		for(var i = 1; i<sum_v.length; i++){
+		
+			if(sum_v[i]<min)
+				min = sum_v[i];
+			if(sum_v[i]>max)
+				max = sum_v[i];
+		}
+		
+		document.writeln(" " + min + " " + max);
+	}
+}
+window.addEventListener("load", Sum, false);
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,38 @@
+#container{width:80%; height:800px; position:fixed; margin:10px auto auto 10%;  border:1px; border-style:solid; border-color:navy; border-radius:5px; background-color:black;}
+#add_list{position:relative; float:right; margin-right:10px;}
+#items{/*border:1px dashed green; border-radius:5px;*/ margin:60px 10px 10px 10px;}
+#add_item{margin-bottom:10%;}
+ol{color:white;}
+ol li{border:1px solid black; padding:2px; margin-bottom:5px; width:90%}
+ol li:hover{background-color:lightblue}
+div #li{position:relative; width:100%; height:100%;}
+div .delete{position:relative; left:105%;}
+div #time{position:relative; left:70%; color:blue;}
+.checkbox{position:relative; flow:right; left:95%; top:10px;}
+h2{text-align:center; color:green; background-color:white;}
+.completeItem{margin:5px;}
+.modal_style{color:navy; font-style:bolder;}
+#time{color:white; font-style:bolder;}
+
+input[type=checkbox]{
+    display: inline-block;
+    position: relative;
+    padding: 6px;
+    background-color: white;
+    border: 1px solid lightgray; /* border of the checkbox */
+    border-radius: 3px
+}
+
+input[type=checkbox]:checked{
+    background-color: green; /*background color of the box to be */
+    color: white;
+}
+
+input[type=checkbox]:checked:after {
+    position: absolute;
+    left: 2px;
+    top: 0px;
+    color: white; /* Color of the checkmark */
+    content: '\2714'; /* heavy checkmark. 2713 for a light one. */
+    font-size: 10px;
+} 

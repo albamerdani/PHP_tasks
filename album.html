@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Gallery</title>
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--
+<script type="text/javascript">
+
+$(window).load(function(){
+
+	$('img').on('click', function()
+	{
+		var src = $(this).attr('src');		
+		$('#model').attr('src', src);
+		$('#model').attr('visibility', 'show');
+
+	});
+	
+});
+</script>
+-->
+<style type="text/css">
+
+#container{border:1px solid black; position: relative; left:25px; width:500px; height:300px;}
+			
+#container>img{width:100%; height:100%; position: absolute;}
+
+#butona>.btn{width:50px; height:50px; position: absolute; 
+				border:none; border-radius:25px; top:130px; left:90%;
+				background:black; color:white; font-size:25px;}
+#butona>#prev{position:absolute; left:0px;}
+#butona>#next{position:absolute; float:right;}
+h1{text-align:center; font-family:Times New Roman; color:navy; top:10px;}
+#album img{padding:5px;}
+img {width:500px; height:300px;}
+
+</style>
+
+
+</head>
+
+<body>
+
+<p><h1>Image Gallery</h1></p>
+
+ <div id = "album">  
+	<img src="images/computer_engineering.jpg" data-toggle="modal" data-target="#imageModal">
+	<img src="images/IoT.jpg" data-toggle="modal" data-target="#imageModal">
+	<img src="images/Intel-electronics.jpg" data-toggle="modal" data-target="#imageModal">
+	<img src="images/quantum-computer-internet-illos.jpg" data-toggle="modal" data-target="#imageModal">
+	<img src="images/keep-calm-and-study-computer-engineering.jpg" data-toggle="modal" data-target="#imageModal">		
+</div>
+
+<!--
+<div id = "show">
+	<img src="" id="model" visibility="hidden" >
+</div>
+-->
+<br/>
+<button id="imazh" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#imageModal">Hap imazhin</button>
+
+<div class="modal fade" id="imageModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header" style = "background:lightblue">
+				<button type="button" class="close" data-dismiss="modal" style="color:navy">&times;</button>
+				<h4 class="modal-title" style = "color:navy; font-style:bolder">Image</h4>
+			</div>
+			<div class="modal-body" id="butona">
+				<div id = "container">
+					<img class = "slide" src="images/computer_engineering.jpg" >
+					<img class = "slide" src="images/IoT.jpg" >
+					<img class = "slide" src="images/Intel-electronics.jpg" >
+					<img class = "slide" src="images/quantum-computer-internet-illos.jpg" >
+					<img class = "slide" src="images/keep-calm-and-study-computer-engineering.jpg" >
+				</div>
+				<button  class="btn" id="prev" onclick = "plusIndex(-1)">&#10094;</button>
+				<button class="btn" id="next" onclick = "plusIndex(1)">&#10095;</button>
+			</div>
+			
+			<div class="modal-footer" style="background:navy">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+      
+    </div>
+</div>
+
+<script type="text/javascript">
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusIndex(n){  
+	showSlides(slideIndex +=n);
+}
+
+function showSlides(n) {
+    var i;
+    var slide = document.getElementsByClassName("slide");
+
+	if (n > slide.length) {slideIndex = 1};
+	if (n < 1) {slideIndex = slide.length};	
+    for (i = 0; i < slide.length; i++)
+	{
+       slide[i].style.display = "none";  
+    }
+	
+	slide[slideIndex-1].style.display = "block";  
+  
+}
+</script>
+
+</body>
+</html>

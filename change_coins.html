@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+var nr = window.prompt("Vendosni nje vlere pozitive per te nderruar");
+var n = parseInt( nr );
+var sasia = window.prompt("Vendosni nje vlere pozitive per sasine e monedhave ne dispozicion");
+var m = parseInt( sasia );
+if(!isFinite(n) || !isFinite(m) ){
+		document.writeln("Vendosni numra te sakte pozitive");
+}
+var coins = new Array(m);
+	for(var i=0; i<m; i++){
+		var  vlera= window.prompt("Vendosni nje vlere pozitive per monedhen");
+		coins[i] = parseInt( vlera );
+		if(!isFinite(coins[i])){
+			document.writeln("Vendosni numra te sakte pozitive");
+		}
+	}
+	
+function nrOfWaysToChange(){
+	
+	var count;
+	
+	if(n == 0)
+		document.writeln("0");
+	else if(m == 0)
+		document.writeln("0");
+	else{
+	
+		for(var j=0; j<m; j++)
+		{
+			if(n%coins[j] == 0)
+				count = count + 1;
+		}
+		
+		var sum = 0;
+		for(var k=0; k<coins.length; k++)
+		{
+			for(var l=1; l<coins.length; l++)
+			{
+				sum = sum + coins[k] + coins[l];
+				if(sum < n)
+					sum = sum + coins[l+1];
+				if(sum == n)
+					count = count + 1;
+			
+			}
+		}
+		return count;
+	}
+}
+window.addEventListener("load", nrOfWaysToChange, false);
+</script>
+</head>
+<body>
+</body>
+</html>

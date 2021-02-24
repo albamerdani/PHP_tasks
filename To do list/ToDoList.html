@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To do list</title>
+<meta charset = "utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- jQuery library-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel = "stylesheet" href = "todolist.css">
+
+<script type="text/javascript">
+var pershkrim;
+var koha;
+	function add_item(event){
+		var name = $('#name').val();
+		var data = $('#data').val();
+		var time = $('#ora').val();
+		var description = $('#description').val();
+		pershkrim = description;
+		koha=time;
+		$('#new_item').append('<li onclick="view_item(this)" class="list-group-item" style="color:navy; font-style:bold;"><div id="li" data-toggle="modal" data-target="#itemModal">'+ name + 
+		'<div id="time" style="color:navy font-style:bolder;">Data: ' + data + '  Ora: ' + time + '</div></div><input type="checkbox" onclick="complete_item(this)" name="check" class="completeItem" class="styled-checkbox" class="checkbox">' + 
+		'<div><input type="button" onclick="delete_item(this)" name="delete" value="Delete" class="btn btn-danger delete"></div></li>');
+		$('#name').val("");
+		$('#data').val("");
+		$('#ora').val("");
+		$('#description').val("");
+	}
+	
+	function delete_item(el){		
+		$(el).parent().parent().remove();
+	}
+	
+	function complete_item(el){
+		$(el).parent().html("DONE!");
+		$(el).parent().hide("slow", 2000);
+	}
+	
+	function view_item(el){
+		$('#summary').html(pershkrim);
+	}
+	
+	//$("ol").sortable({axis:"y", containment:"#container"});
+	
+	$(document).ready(function(){
+	
+		
+	
+		$(".add-element").on('click', function(){
+			$("#myModal").modal("hide");
+			add_item();
+		});
+		
+		$("#addList").on('click', function(){
+			$("#listModal").modal("hide");
+			add_list();
+		});
+	
+		
+		$('#new_item').keypress(function(event){
+			if(event.which === 13){
+				add_item();
+				event.preventDefault();
+			}
+		});
+
+		function notification(){
+		
+			var t = $.now();
+			if(t.val() < koha ){
+				alert("You have an item to do!!");	
+			}
+		}
+	});
+	
+	$(function() {
+		$('.styled-checkbox').click(function() {
+			var $this = $(this);
+			if($this.is(':checked')) {
+				$this.addClass('checked');
+			}
+			else {
+				$this.removeClass('checked');
+			}
+		});
+	  
+		$('.styled-checkbox').change();
+	});
+
+</script>
+</head>
+
+<body>
+
+<div id="container">
+	<div>
+		<h2> To Do List</h2>
+	</div>
+	
+	<div id="lists">
+		<ul id="new_list" style="display:inline; list-style:none" class="list-group">
+		</ul>
+		
+	</div>
+
+	<div id="items">
+		<ol id="new_item" class="table-striped" class="list-group">
+
+		</ol>
+	<button id="add_item" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add item</button>
+	</div>
+</div>
+
+
+	<!-- Modal per te shtuar Item-->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+		<div class="modal-content">
+		
+			<div class="modal-header" style = "background:lightblue">
+				<button type="button" class="close" data-dismiss="modal" style="color:navy">&times;</button>
+				<h4 class="modal-title" class="modal_style">New Item</h4>
+			</div>
+			
+			<div class="modal-body">
+				<p class="modal_style">Vendos nje emertim:<input type="text" id="name" size="255" class="form-control"/></p>
+				<p class="modal_style">Vendos nje pershkrim:<input type="text" id="description" size="255" class="form-control"/></p>
+				<p class="modal_style">Vendos daten: <input type="date" name="data" id="data"/> Vendos oren: <input type="time" name="ora" id="ora"/></p>
+			</div>
+			
+			<div class="modal-footer" style="background:navy">
+				<button type="button" class="btn btn-success add-element" data-dismiss="modal">Add Item</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+    </div>
+</div>
+
+
+<!-- Modal per te pare pershkrimin e Item-->
+<div class="modal fade" id="itemModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+		<div class="modal-content">
+		
+			<div class="modal-header" style = "background:lightblue">
+				<button type="button" class="close" data-dismiss="modal" style="color:navy">&times;</button>
+				<h4 class="modal-title" class="modal_style">View Item</h4>
+			</div>
+			
+			<div class="modal-body">
+				<p class="modal_style">Pershkrimi:<div id="summary"></div></p>
+			</div>
+			
+			<div class="modal-footer" style="background:navy">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+    </div>
+</div>
+
+</body>
+</html>

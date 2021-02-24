@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+var  ore_v = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+var  min_v = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "quarter", "sixteen", "seventeen", 
+			"eighteen", "nineteen", "twenty", "twenty one", "twenty two", "twenty three", "twenty four", "twenty five", "twenty six","twenty seven", "twenty eight", "twenty nine", "half"];
+
+var hour;
+var minute;
+var h;
+var m;
+var ore;
+var minuta;
+
+hour = window.prompt("Vendosni oren nga 1 ne 12:");
+h = parseInt( hour );
+minute = window.prompt("Vendosni minutat nga 0 ne 60:");
+m = parseInt( minute );
+
+
+	if(h < 1 || h > 12 || m < 0 || m > 60 || !isFinite(h) || !isFinite(m)){
+		document.writeln("<p> Vendosni nje vlere te sakte per oren dhe minutat.</p>");
+	}
+	else {
+		if(m == 0){
+			document.writeln(" " + ore_v[i] + " o'clock");
+		}
+		else if(m == 1){
+				document.writeln("<p>one minute past " + ore_v[h] + "</p>");
+			}
+		else if(m == 15){
+				document.writeln(" " + min_v[m] + " past " + ore_v[h] + "</p>");
+			}
+		
+		else if(m < 30){
+				document.writeln(" " + min_v[m] + " minutes past " + ore_v[h] );
+			}
+		
+		else if(m > 30){
+			ore = h + 1;
+			if(m == 45){
+				document.writeln("<p>quarter to " + ore_v[ore] + "</p>");
+			}
+			else{
+			minuta = 60 - m;
+			document.writeln("<p>" + min_v[minuta] + " minutes to " + ore_v[ore] + "</p>");
+			}
+		}
+		
+	}
+</script>
+</head>
+<body>
+</body>
+</html>
